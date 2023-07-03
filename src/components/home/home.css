@@ -89,7 +89,8 @@
 
   /**********Btn flotante**********/
 
-  .container-menuBtn{
+  .container-menuBtn, 
+  .container-menuBtn-horizontal{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -101,7 +102,17 @@
     /* background: #fff; */
   }
 
-  .container-menuBtn .menuBtn,.container-menuBtn .menuBtnMain{
+  .container-menuBtn-horizontal{
+    flex-direction: row;
+    justify-content: flex-end;
+    height: auto;
+    /* background: #fff; */
+  }
+
+  .container-menuBtn .menuBtn,
+  .container-menuBtn .menuBtnMain,
+  .container-menuBtn-horizontal .menuBtn,
+  .container-menuBtn-horizontal .menuBtnMain{
     position: relative;
     display: flex;
     justify-content: center;
@@ -123,22 +134,31 @@
     transition: all .5s;
   }
 
-  .container-menuBtn .menuBtn.blue{
+  .container-menuBtn-horizontal .menuBtn,
+  .container-menuBtn-horizontal .menuBtnMain{
+    margin-left: 6px;
+  }
+
+  .container-menuBtn .menuBtn.blue,
+  .container-menuBtn-horizontal .menuBtn.blue{
     background-color: rgb(25, 118, 210);
     color:#fff;
   }
 
-  .container-menuBtn .menuBtn.red{
+  .container-menuBtn .menuBtn.red,
+  .container-menuBtn-horizontal .menuBtn.red{
     background-color: #dd4b39;
     color:#fff;
   }
 
-  .container-menuBtn .menuBtn.green{
+  .container-menuBtn .menuBtn.green,
+  .container-menuBtn-horizontal .menuBtn.green{
     background-color: #00a65a;
     color:#fff;
   }
 
-  .container-menuBtn .menuBtn.yellow{
+  .container-menuBtn .menuBtn.yellow,
+  .container-menuBtn-horizontal .menuBtn.yellow{
     background-color: #f39c12;
     color:#fff;
   }
@@ -188,28 +208,33 @@
     100% { opacity:0; height: 0; width: 0; font-size: 0;}
   } 
 
-  .container-menuBtn .menuBtnMain:hover{
-    transform: rotate(-25deg);
+  .container-menuBtn .menuBtnMain:hover,
+  .container-menuBtn-horizontal .menuBtnMain:hover{
+    transform: rotate(-90deg);
     background-color: rgb(19, 87, 154);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 1px -2px, rgba(0, 0, 0, 0.28) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 1px 5px 0px;
   }
 
-  .container-menuBtn .menuBtn.blue:hover{
+  .container-menuBtn .menuBtn.blue:hover,
+  .container-menuBtn-horizontal .menuBtn.blue:hover{
     background-color: rgb(19, 87, 154);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 1px -2px, rgba(0, 0, 0, 0.28) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 1px 5px 0px;
   }
 
-  .container-menuBtn .menuBtn.red:hover{
+  .container-menuBtn .menuBtn.red:hover,
+  .container-menuBtn-horizontal .menuBtn.red:hover{
     background-color: #c5180c;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 1px -2px, rgba(0, 0, 0, 0.28) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 1px 5px 0px;
   }
 
-  .container-menuBtn .menuBtn.green:hover{
+  .container-menuBtn .menuBtn.green:hover,
+  .container-menuBtn-horizontal .menuBtn.green:hover{
     background-color: #0f7346;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 1px -2px, rgba(0, 0, 0, 0.28) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 1px 5px 0px;
   }
 
-  .container-menuBtn .menuBtn.yellow:hover{
+  .container-menuBtn .menuBtn.yellow:hover,
+  .container-menuBtn-horizontal .menuBtn.yellow:hover{
     background-color: #ad7111;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 1px -2px, rgba(0, 0, 0, 0.28) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 1px 5px 0px;
   }
@@ -278,18 +303,34 @@
 
 /******Descripción del botón********/
 
-.container-menuBtn .label-title span{
+
+.container-menuBtn .label-title span,
+.container-menuBtn-horizontal .label-title span {
   display:block;
-  margin-right:18px;
+  position:absolute;
+  right:80px;
+  top:15px;
   font-size:12px;
   background:#181717;
   color:#fff;
-  padding:6px;
+  text-align:right;
+  min-width:max-content;
+  padding:5px;
   border-radius:6px;
   border-bottom: 1px solid #ccc;
-  /* box-shadow: -6px 5px 11px -3px rgba(0,0,0,0.75);
-  -webkit-box-shadow: -6px 5px 11px -3px rgba(0,0,0,0.75);
-  -moz-box-shadow: -6px 5px 11px -3px rgba(0,0,0,0.75); */
+}
+
+
+.container-menuBtn-horizontal .label-title span {
+  right:0px;
+  bottom:90px;
+  top:auto;
+  font-size:12px;
+  background:#181717;
+  text-align:center;
+  min-width:auto;
+  border-top: 1px solid #ccc;
+  border-bottom: none;
 }
 
 .container-menuBtn .label-title span::after{
@@ -297,13 +338,28 @@
     content: "\f04b";
     font-weight: bold;
     position: absolute;
-    right: 66px;
-    top: 23px;
+    top:2px;
+    right: -13px;
     color:#181717;
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     font-size: 17px; 
-   
+}
+
+.container-menuBtn-horizontal .label-title span::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f0d7";
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    left: 0;
+    color:#181717;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px; 
+    bottom: -27px;
 }

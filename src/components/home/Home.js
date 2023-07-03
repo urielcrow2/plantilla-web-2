@@ -19,7 +19,12 @@ export const Home = ()=>{
                 </p>
             </div>
 
-           <FloatBtnGroups />
+            <div style={{marginBottom:80}}>
+                <FloatBtnGroups />
+            </div>
+          
+            <FloatBtnGroups orientation="horizontal"/>
+           
 
         </section>
     )
@@ -27,7 +32,7 @@ export const Home = ()=>{
 
 
 
-const FloatBtnGroups = ()=>{
+const FloatBtnGroups = ({orientation="vertical"})=>{
 
     const [display,setDisplay] = useState(true);
     const refBtnMain = useRef(null);
@@ -44,7 +49,7 @@ const FloatBtnGroups = ()=>{
     },[]);
 
     return(
-        <div ref={refBtnMain} className='container-menuBtn'>
+        <div ref={refBtnMain} className={`${orientation === 'vertical' ? 'container-menuBtn' : 'container-menuBtn-horizontal' }`}>
             {/* <FloatBtn display={display} icon="fas fa-key" onClick={()=>console.log('realizar acción')}/> */}
             <FloatBtn2 display={display} title="Cambiar contraseña" color="green" icon="fas fa-key" onClick={()=>console.log('realizar acción')} />
             <FloatBtn2 display={display} title="Detalles" color="red" icon="fas fa-info" onClick={()=>console.log('realizar acción')} />
@@ -80,13 +85,12 @@ const FloatBtn2 = ({display,icon,onClick,color="blue",title="",main=false})=>{
             waves_ripple[0].style.top = `${y}px`;
             waves_ripple[0].style.left = `${x}px`;
             waves_ripple[0].classList.add("waves-animate");
-        
         }
 
     },[]);
 
     return(
-        <div className='position-relative d-flex justify-content-end align-items-center'>
+        <div className='position-relative'>
             {
                 title
                 &&
@@ -99,4 +103,5 @@ const FloatBtn2 = ({display,icon,onClick,color="blue",title="",main=false})=>{
             </i>
         </div>
     )
+
 }
